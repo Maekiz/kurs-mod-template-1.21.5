@@ -12,14 +12,15 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(MinecraftClient.class)
 public class FlyBoatMixin {
-    private static final Logger LOGGER = LoggerFactory.getLogger("Maekiz");
+   //private static final Logger LOGGER = LoggerFactory.getLogger("Maekiz");
     private static final double VELOCITY_BUMP = 0.09;
     private static final double MAX_SPEED = 1.5;
     private static final double MAX_VELY = 1.3;
     private static final double SPEED = 1.1;
 
+    // Undeer er en funksjon som kjører hele tiden i minecraft
     @Inject(at = @At("HEAD"), method = "tick")
-    private void init(CallbackInfo info) {
+    private void repeatingEverySecond(CallbackInfo info) {
         var mc = MinecraftClient.getInstance();
         var player = mc.player;
 
@@ -27,7 +28,6 @@ public class FlyBoatMixin {
         if (player == null){
             return;
         }
-
         //sjekker etter båt
 
         var vehicle = player.getVehicle();
@@ -35,7 +35,6 @@ public class FlyBoatMixin {
         if (vehicle == null){
             return;
         }
-
         // sjekk etter jumpkey/space
         Vec3d current = vehicle.getVelocity();
         var velX = current.x * SPEED;
@@ -44,7 +43,7 @@ public class FlyBoatMixin {
         double horizontalLen = Math.sqrt(velX * velX + velZ * velZ);
 
         if (horizontalLen > MAX_SPEED){
-            // skalerer ned
+            // skalerer ned horisontal fart
             double scale = MAX_SPEED / horizontalLen;
 
             velX = velX * scale;
@@ -56,10 +55,6 @@ public class FlyBoatMixin {
             velY =Math.min(current.y + VELOCITY_BUMP, MAX_VELY);
         }
         vehicle.setVelocity(velX, velY, velZ);
-
-        // Får velocity
-
-
 
 
     }
