@@ -1,6 +1,6 @@
 # Minecraft Hacked Client
 
-## Begynn å enkelt hacke minecraft
+## Begyn å enkelt hacke minecraft
 
 Hacken ligger plassert i:
 src -> client -> java -> kurs.kursmod -> mixin.client -> FlyBoatMixin

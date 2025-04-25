@@ -1,6 +1,8 @@
 package kurs.kursmod.mixin.client;
 
 import net.minecraft.client.MinecraftClient;
+import net.minecraft.item.ItemStack;
+import net.minecraft.item.Items;
 import net.minecraft.util.math.Vec3d;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -29,7 +31,6 @@ public class FlyBoatMixin {
             return;
         }
         //sjekker etter båt
-
         var vehicle = player.getVehicle();
 
         if (vehicle == null){
