@@ -19,7 +19,7 @@
 			"kurs.kursmod.KursMod"
 		],
 		"client": [
-			"kurs.kursmod.KursModClient"
+
 		]
 	},
 	"mixins": [
